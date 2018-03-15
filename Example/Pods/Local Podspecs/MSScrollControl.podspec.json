@@ -1,7 +1,7 @@
 {
   "name": "MSScrollControl",
   "version": "0.1.0",
-  "summary": "A short description of MSScrollControl.",
+  "summary": "Make statusbar and tabbar scrollable.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/masonchang1991/MSScrollControl",
   "license": {
@@ -9,7 +9,7 @@
     "file": "LICENSE"
   },
   "authors": {
-    "masonchang1991": "mason.chang@appimc.com"
+    "masonchang1991": "masonchang1991@gmail.com"
   },
   "source": {
     "git": "https://github.com/masonchang1991/MSScrollControl.git",
@@ -18,5 +18,6 @@
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "MSScrollControl/Classes/**/*"
+  "source_files": "MSScrollControl/Classes/**/*",
+  "frameworks": "UIKit"
 }

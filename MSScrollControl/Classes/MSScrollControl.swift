@@ -87,7 +87,7 @@ public class MSScrollControl {
         }
     }
     
-    init(viewController: UIViewController, tabbarController: UITabBarController?) {
+    public init(viewController: UIViewController, tabbarController: UITabBarController?) {
         self.viewController = viewController
         self.tabbarController = tabbarController
         if tabbarController != nil {
@@ -96,7 +96,7 @@ public class MSScrollControl {
         setupInitData()
     }
     
-    init(viewController: UIViewController, tabbarController: UITabBarController?, parameters: [MSScrollControlParameter]) {
+    public init(viewController: UIViewController, tabbarController: UITabBarController?, parameters: [MSScrollControlParameter]) {
         self.viewController = viewController
         self.tabbarController = tabbarController
         if tabbarController != nil {
@@ -106,7 +106,7 @@ public class MSScrollControl {
         setupInitData()
     }
     
-    init(viewController: UIViewController, tabbarController: UITabBarController?, navController: UINavigationController?, parameters: [MSScrollControlParameter]) {
+    public init(viewController: UIViewController, tabbarController: UITabBarController?, navController: UINavigationController?, parameters: [MSScrollControlParameter]) {
         self.viewController = viewController
         self.tabbarController = tabbarController
         if tabbarController != nil {
@@ -120,7 +120,7 @@ public class MSScrollControl {
         setupInitData()
     }
     
-    func setupInitData() {
+    public func setupInitData() {
         guard let statusBarWindow = UIApplication.shared.value(forKey: "statusBarWindow") as? UIWindow else { return }
         self.statusBarWindow = statusBarWindow
         self.statusBarHeight = UIApplication.shared.statusBarFrame.height
@@ -130,7 +130,7 @@ public class MSScrollControl {
     }
     
     
-    func barUpdate() {
+    public func barUpdate() {
         
         if isAnimating { return }
         
@@ -204,7 +204,7 @@ public class MSScrollControl {
         }
     }
     
-    func barEndUpdate() {
+    public func barEndUpdate() {
         
         if isAnimating { return }
         
@@ -300,7 +300,7 @@ public class MSScrollControl {
         }
     }
     
-    func restoreToOrigin() {
+    public func restoreToOrigin() {
         
         if statusBarWindow.frame.minY == 0.0 {
             return

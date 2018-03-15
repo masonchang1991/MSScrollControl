@@ -5,7 +5,6 @@ target 'MSScrollControl_Example' do
 
   target 'MSScrollControl_Tests' do
     inherit! :search_paths
-
     
   end
 end
