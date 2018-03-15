@@ -1,0 +1,6 @@
+framework module MSScrollControl {
+  umbrella header "MSScrollControl-umbrella.h"
+
+  export *
+  module * { export * }
+}

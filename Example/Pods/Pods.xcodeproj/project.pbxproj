@@ -1,0 +1,726 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		083886DA594546D1EAE407AB9311A26D /* MSScrollControl-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F8C5E4A3F61BF6CDF635A5562F244985 /* MSScrollControl-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1EC8D90B78FA19A93803F384F3A6F451 /* Pods-MSScrollControl_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E63BE774B3632EB550E583ECB51F8EF /* Pods-MSScrollControl_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32AB7773C65B7699BC7B39F88D5CD796 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		48776928A9D4EA1BFFB4C908DE7EF94D /* MSScrollControlParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE99193CBF1CB2BA1C3968249C80A8B /* MSScrollControlParameter.swift */; };
+		5048CC51EC80403710BF4F34D0377986 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		5F4D74EDC61327ABBE15A1E7AEFBD2B5 /* Pods-MSScrollControl_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A15CFF3F3E8F8E9187CA233BF4BB0846 /* Pods-MSScrollControl_Tests-dummy.m */; };
+		60BB3D9287CFA6EC1C6ED7BF15205EF7 /* MSScrollControl-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C1F190A8CAB613F95A06E49F108D9C /* MSScrollControl-dummy.m */; };
+		73A1A26E0DB3535BE9330DADA4156C36 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF208E736AD3460C82A7FE8F20C25D1 /* ReplaceMe.swift */; };
+		81AAB14D11219CFC53A9FEC9AD809B71 /* MSScrollControl + UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8EE172E5AC3D8A98A4A559D97FA4FD /* MSScrollControl + UIScrollView.swift */; };
+		8E1BEE434931816097E5F871F0826C3E /* MSScrollControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063CC28279537160619DC50C4DBBB1EC /* MSScrollControl.swift */; };
+		AE0C82B22901900E9780449672BB9A20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		E458EF654C73B9563A8456AFDAF90468 /* MSScrollControlState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD905D12EA468E151A7C6FFF4DB43F77 /* MSScrollControlState.swift */; };
+		F56D4FA77E88839C3C627D23A8E65DFA /* Pods-MSScrollControl_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39405B580BBB47A8A7C89C7B33BB0BDD /* Pods-MSScrollControl_Example-dummy.m */; };
+		F600B77C0CD4CCAFF09947290019E920 /* Pods-MSScrollControl_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D7C87140439A86A6B3D135809C04F65 /* Pods-MSScrollControl_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5BCD697D4F29CE2A516C844E22BEB173 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03068460814FD805027F96219ABB347F;
+			remoteInfo = MSScrollControl;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		063CC28279537160619DC50C4DBBB1EC /* MSScrollControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MSScrollControl.swift; path = MSScrollControl/Classes/MSScrollControl.swift; sourceTree = "<group>"; };
+		0AE99193CBF1CB2BA1C3968249C80A8B /* MSScrollControlParameter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MSScrollControlParameter.swift; path = MSScrollControl/Classes/MSScrollControlParameter.swift; sourceTree = "<group>"; };
+		0BE7B8C9D72675C754CCF09C235E090C /* Pods_MSScrollControl_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MSScrollControl_Tests.framework; path = "Pods-MSScrollControl_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28675DAA01F139EEDBF61A80AB238816 /* Pods-MSScrollControl_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MSScrollControl_Example-resources.sh"; sourceTree = "<group>"; };
+		2D7C87140439A86A6B3D135809C04F65 /* Pods-MSScrollControl_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MSScrollControl_Tests-umbrella.h"; sourceTree = "<group>"; };
+		2DA894657998A122F9006694AA56EFFD /* Pods-MSScrollControl_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MSScrollControl_Example.modulemap"; sourceTree = "<group>"; };
+		31EE51A400CF2097D24DED90DBBEEBFA /* Pods-MSScrollControl_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MSScrollControl_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		327CC19867F1C254264097F25BF5E17C /* MSScrollControl.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MSScrollControl.xcconfig; sourceTree = "<group>"; };
+		342B3C961EEDE9CC7E6868662A6CCBA2 /* Pods-MSScrollControl_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MSScrollControl_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		39405B580BBB47A8A7C89C7B33BB0BDD /* Pods-MSScrollControl_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MSScrollControl_Example-dummy.m"; sourceTree = "<group>"; };
+		63A02404F99F6E981ABC3FC08F6591A1 /* Pods-MSScrollControl_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MSScrollControl_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		657DE4180A4341EB0893F38FAC68EC7C /* Pods-MSScrollControl_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MSScrollControl_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		67191C068C4DE74FA9C72003BC9C9C0E /* Pods-MSScrollControl_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MSScrollControl_Example-frameworks.sh"; sourceTree = "<group>"; };
+		7661BA0F57A4F7D8B407C0F8BD4B2E2A /* Pods-MSScrollControl_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MSScrollControl_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		7D741F49E906BE608007DA972C0E5460 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DF208E736AD3460C82A7FE8F20C25D1 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = MSScrollControl/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
+		80E1827A3FADC035CE0A82D5CCEDA341 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86BBB20426271019758AB29097A38993 /* MSScrollControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MSScrollControl.framework; path = MSScrollControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8966C950A2AB8FD1CAFEC21106ADA691 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A138D812D06CCF124D971516197F517 /* MSScrollControl-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MSScrollControl-prefix.pch"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		94C9A99F69BC4E6038E3792B9161C327 /* Pods_MSScrollControl_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MSScrollControl_Example.framework; path = "Pods-MSScrollControl_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E63BE774B3632EB550E583ECB51F8EF /* Pods-MSScrollControl_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MSScrollControl_Example-umbrella.h"; sourceTree = "<group>"; };
+		A15CFF3F3E8F8E9187CA233BF4BB0846 /* Pods-MSScrollControl_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MSScrollControl_Tests-dummy.m"; sourceTree = "<group>"; };
+		A2EB9D4B7F612650DF341E57507E730F /* Pods-MSScrollControl_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MSScrollControl_Example.release.xcconfig"; sourceTree = "<group>"; };
+		AA0A17B3672F6202C3D7A25A26A3EFCA /* Pods-MSScrollControl_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MSScrollControl_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		AC7036D9D0A26777D581E093BFD0CCB8 /* Pods-MSScrollControl_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MSScrollControl_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		AD905D12EA468E151A7C6FFF4DB43F77 /* MSScrollControlState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MSScrollControlState.swift; path = MSScrollControl/Classes/MSScrollControlState.swift; sourceTree = "<group>"; };
+		C119C2E45322ED5CFFA2864EED44C53B /* Pods-MSScrollControl_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MSScrollControl_Tests.modulemap"; sourceTree = "<group>"; };
+		CEFF056DB1B1865BF8E55356B2EA0B62 /* Pods-MSScrollControl_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MSScrollControl_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		D6C1F190A8CAB613F95A06E49F108D9C /* MSScrollControl-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MSScrollControl-dummy.m"; sourceTree = "<group>"; };
+		DE39591CF6EB829203DF2B9504554A12 /* Pods-MSScrollControl_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MSScrollControl_Tests-resources.sh"; sourceTree = "<group>"; };
+		EA8EE172E5AC3D8A98A4A559D97FA4FD /* MSScrollControl + UIScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MSScrollControl + UIScrollView.swift"; path = "MSScrollControl/Classes/MSScrollControl + UIScrollView.swift"; sourceTree = "<group>"; };
+		F76FD7C36C96353B97621C023735D758 /* MSScrollControl.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MSScrollControl.modulemap; sourceTree = "<group>"; };
+		F8C5E4A3F61BF6CDF635A5562F244985 /* MSScrollControl-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MSScrollControl-umbrella.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		750F209819A5A56977B727609389F413 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32AB7773C65B7699BC7B39F88D5CD796 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79DA7A005AF9F95DEF08F1BDBA44BB60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE0C82B22901900E9780449672BB9A20 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B106BD91D671EF3C86F8DB1D73F5DD10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5048CC51EC80403710BF4F34D0377986 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04DA477E51F9E013C431CDA7D1096EAD /* MSScrollControl */ = {
+			isa = PBXGroup;
+			children = (
+				063CC28279537160619DC50C4DBBB1EC /* MSScrollControl.swift */,
+				EA8EE172E5AC3D8A98A4A559D97FA4FD /* MSScrollControl + UIScrollView.swift */,
+				0AE99193CBF1CB2BA1C3968249C80A8B /* MSScrollControlParameter.swift */,
+				AD905D12EA468E151A7C6FFF4DB43F77 /* MSScrollControlState.swift */,
+				7DF208E736AD3460C82A7FE8F20C25D1 /* ReplaceMe.swift */,
+				9C652EF071CC3DD1CCFA7CCED99884C1 /* Support Files */,
+			);
+			name = MSScrollControl;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		406923BC64E0350087348654CFA23EC9 /* Pods-MSScrollControl_Example */ = {
+			isa = PBXGroup;
+			children = (
+				7D741F49E906BE608007DA972C0E5460 /* Info.plist */,
+				2DA894657998A122F9006694AA56EFFD /* Pods-MSScrollControl_Example.modulemap */,
+				342B3C961EEDE9CC7E6868662A6CCBA2 /* Pods-MSScrollControl_Example-acknowledgements.markdown */,
+				AA0A17B3672F6202C3D7A25A26A3EFCA /* Pods-MSScrollControl_Example-acknowledgements.plist */,
+				39405B580BBB47A8A7C89C7B33BB0BDD /* Pods-MSScrollControl_Example-dummy.m */,
+				67191C068C4DE74FA9C72003BC9C9C0E /* Pods-MSScrollControl_Example-frameworks.sh */,
+				28675DAA01F139EEDBF61A80AB238816 /* Pods-MSScrollControl_Example-resources.sh */,
+				9E63BE774B3632EB550E583ECB51F8EF /* Pods-MSScrollControl_Example-umbrella.h */,
+				657DE4180A4341EB0893F38FAC68EC7C /* Pods-MSScrollControl_Example.debug.xcconfig */,
+				A2EB9D4B7F612650DF341E57507E730F /* Pods-MSScrollControl_Example.release.xcconfig */,
+			);
+			name = "Pods-MSScrollControl_Example";
+			path = "Target Support Files/Pods-MSScrollControl_Example";
+			sourceTree = "<group>";
+		};
+		7C9725ED9AB51FCED885987DAEDE6FEE /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				04DA477E51F9E013C431CDA7D1096EAD /* MSScrollControl */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				7C9725ED9AB51FCED885987DAEDE6FEE /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				A03915EA3B01B29CB35580572FCAD2C6 /* Products */,
+				943CC0DE81F3490CE9C658CE681971F6 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		943CC0DE81F3490CE9C658CE681971F6 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				406923BC64E0350087348654CFA23EC9 /* Pods-MSScrollControl_Example */,
+				C8F9033B2D70469B67BB5BB71D3E504A /* Pods-MSScrollControl_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		9C652EF071CC3DD1CCFA7CCED99884C1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8966C950A2AB8FD1CAFEC21106ADA691 /* Info.plist */,
+				F76FD7C36C96353B97621C023735D758 /* MSScrollControl.modulemap */,
+				327CC19867F1C254264097F25BF5E17C /* MSScrollControl.xcconfig */,
+				D6C1F190A8CAB613F95A06E49F108D9C /* MSScrollControl-dummy.m */,
+				8A138D812D06CCF124D971516197F517 /* MSScrollControl-prefix.pch */,
+				F8C5E4A3F61BF6CDF635A5562F244985 /* MSScrollControl-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/MSScrollControl";
+			sourceTree = "<group>";
+		};
+		A03915EA3B01B29CB35580572FCAD2C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				86BBB20426271019758AB29097A38993 /* MSScrollControl.framework */,
+				94C9A99F69BC4E6038E3792B9161C327 /* Pods_MSScrollControl_Example.framework */,
+				0BE7B8C9D72675C754CCF09C235E090C /* Pods_MSScrollControl_Tests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C8F9033B2D70469B67BB5BB71D3E504A /* Pods-MSScrollControl_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				80E1827A3FADC035CE0A82D5CCEDA341 /* Info.plist */,
+				C119C2E45322ED5CFFA2864EED44C53B /* Pods-MSScrollControl_Tests.modulemap */,
+				AC7036D9D0A26777D581E093BFD0CCB8 /* Pods-MSScrollControl_Tests-acknowledgements.markdown */,
+				7661BA0F57A4F7D8B407C0F8BD4B2E2A /* Pods-MSScrollControl_Tests-acknowledgements.plist */,
+				A15CFF3F3E8F8E9187CA233BF4BB0846 /* Pods-MSScrollControl_Tests-dummy.m */,
+				CEFF056DB1B1865BF8E55356B2EA0B62 /* Pods-MSScrollControl_Tests-frameworks.sh */,
+				DE39591CF6EB829203DF2B9504554A12 /* Pods-MSScrollControl_Tests-resources.sh */,
+				2D7C87140439A86A6B3D135809C04F65 /* Pods-MSScrollControl_Tests-umbrella.h */,
+				63A02404F99F6E981ABC3FC08F6591A1 /* Pods-MSScrollControl_Tests.debug.xcconfig */,
+				31EE51A400CF2097D24DED90DBBEEBFA /* Pods-MSScrollControl_Tests.release.xcconfig */,
+			);
+			name = "Pods-MSScrollControl_Tests";
+			path = "Target Support Files/Pods-MSScrollControl_Tests";
+			sourceTree = "<group>";
+		};
+		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		00007BFE8B9A05C961F956D9E20373B8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EC8D90B78FA19A93803F384F3A6F451 /* Pods-MSScrollControl_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03C20764CB14D8EF1D63C1D26DCF9C67 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F600B77C0CD4CCAFF09947290019E920 /* Pods-MSScrollControl_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7874703FB38B0C8E40DAF6C07B9BFF5F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				083886DA594546D1EAE407AB9311A26D /* MSScrollControl-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		03068460814FD805027F96219ABB347F /* MSScrollControl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96D5E5290584218A766D44C4CC9ACBD7 /* Build configuration list for PBXNativeTarget "MSScrollControl" */;
+			buildPhases = (
+				37E10E70E1293DA28DFDC1C5D4EA80D5 /* Sources */,
+				750F209819A5A56977B727609389F413 /* Frameworks */,
+				7874703FB38B0C8E40DAF6C07B9BFF5F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MSScrollControl;
+			productName = MSScrollControl;
+			productReference = 86BBB20426271019758AB29097A38993 /* MSScrollControl.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		246AAA2B2A59496C101D4EA8E6A99810 /* Pods-MSScrollControl_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F20CD815A21457C491B67E28DE8060D /* Build configuration list for PBXNativeTarget "Pods-MSScrollControl_Tests" */;
+			buildPhases = (
+				C14FAB2D1D757341DC3C1F2D7F040C0E /* Sources */,
+				B106BD91D671EF3C86F8DB1D73F5DD10 /* Frameworks */,
+				03C20764CB14D8EF1D63C1D26DCF9C67 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-MSScrollControl_Tests";
+			productName = "Pods-MSScrollControl_Tests";
+			productReference = 0BE7B8C9D72675C754CCF09C235E090C /* Pods_MSScrollControl_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3C741CD3DF2DAA8F2C884CCFAB0E41CB /* Pods-MSScrollControl_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A97B50511AE558FB1F6EC61350E1D2D5 /* Build configuration list for PBXNativeTarget "Pods-MSScrollControl_Example" */;
+			buildPhases = (
+				4DC4E1FEC14FCB81B63E614734E9AED4 /* Sources */,
+				79DA7A005AF9F95DEF08F1BDBA44BB60 /* Frameworks */,
+				00007BFE8B9A05C961F956D9E20373B8 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F3CD5F1A7542AB2769D6B60BE02244AC /* PBXTargetDependency */,
+			);
+			name = "Pods-MSScrollControl_Example";
+			productName = "Pods-MSScrollControl_Example";
+			productReference = 94C9A99F69BC4E6038E3792B9161C327 /* Pods_MSScrollControl_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = A03915EA3B01B29CB35580572FCAD2C6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				03068460814FD805027F96219ABB347F /* MSScrollControl */,
+				3C741CD3DF2DAA8F2C884CCFAB0E41CB /* Pods-MSScrollControl_Example */,
+				246AAA2B2A59496C101D4EA8E6A99810 /* Pods-MSScrollControl_Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		37E10E70E1293DA28DFDC1C5D4EA80D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81AAB14D11219CFC53A9FEC9AD809B71 /* MSScrollControl + UIScrollView.swift in Sources */,
+				60BB3D9287CFA6EC1C6ED7BF15205EF7 /* MSScrollControl-dummy.m in Sources */,
+				8E1BEE434931816097E5F871F0826C3E /* MSScrollControl.swift in Sources */,
+				48776928A9D4EA1BFFB4C908DE7EF94D /* MSScrollControlParameter.swift in Sources */,
+				E458EF654C73B9563A8456AFDAF90468 /* MSScrollControlState.swift in Sources */,
+				73A1A26E0DB3535BE9330DADA4156C36 /* ReplaceMe.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DC4E1FEC14FCB81B63E614734E9AED4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F56D4FA77E88839C3C627D23A8E65DFA /* Pods-MSScrollControl_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C14FAB2D1D757341DC3C1F2D7F040C0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F4D74EDC61327ABBE15A1E7AEFBD2B5 /* Pods-MSScrollControl_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F3CD5F1A7542AB2769D6B60BE02244AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MSScrollControl;
+			target = 03068460814FD805027F96219ABB347F /* MSScrollControl */;
+			targetProxy = 5BCD697D4F29CE2A516C844E22BEB173 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		09068AC67A09B962C818BD12F91D0164 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 327CC19867F1C254264097F25BF5E17C /* MSScrollControl.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MSScrollControl/MSScrollControl-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MSScrollControl/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MSScrollControl/MSScrollControl.modulemap";
+				PRODUCT_NAME = MSScrollControl;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		232D27B691D458B38196063C476A7236 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31EE51A400CF2097D24DED90DBBEEBFA /* Pods-MSScrollControl_Tests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-MSScrollControl_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MSScrollControl_Tests/Pods-MSScrollControl_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_MSScrollControl_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		33DA7F43A1D2FA3C74A8C8FC246E1FA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		731DC216E1A58545B559F6E0A2418060 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		85B38C507C505C20B22FF0EB3D2245BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 327CC19867F1C254264097F25BF5E17C /* MSScrollControl.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MSScrollControl/MSScrollControl-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MSScrollControl/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MSScrollControl/MSScrollControl.modulemap";
+				PRODUCT_NAME = MSScrollControl;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8E46965ABE43C70BFA4F09321BBD2D44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2EB9D4B7F612650DF341E57507E730F /* Pods-MSScrollControl_Example.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-MSScrollControl_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MSScrollControl_Example/Pods-MSScrollControl_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_MSScrollControl_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CC784BEC210609BCEC2C7A840A2A2B27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 657DE4180A4341EB0893F38FAC68EC7C /* Pods-MSScrollControl_Example.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-MSScrollControl_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MSScrollControl_Example/Pods-MSScrollControl_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_MSScrollControl_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		DE7A65A09E6D8C5FEEB6A4650EA266AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63A02404F99F6E981ABC3FC08F6591A1 /* Pods-MSScrollControl_Tests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-MSScrollControl_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MSScrollControl_Tests/Pods-MSScrollControl_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_MSScrollControl_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33DA7F43A1D2FA3C74A8C8FC246E1FA6 /* Debug */,
+				731DC216E1A58545B559F6E0A2418060 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F20CD815A21457C491B67E28DE8060D /* Build configuration list for PBXNativeTarget "Pods-MSScrollControl_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE7A65A09E6D8C5FEEB6A4650EA266AC /* Debug */,
+				232D27B691D458B38196063C476A7236 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		96D5E5290584218A766D44C4CC9ACBD7 /* Build configuration list for PBXNativeTarget "MSScrollControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09068AC67A09B962C818BD12F91D0164 /* Debug */,
+				85B38C507C505C20B22FF0EB3D2245BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A97B50511AE558FB1F6EC61350E1D2D5 /* Build configuration list for PBXNativeTarget "Pods-MSScrollControl_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC784BEC210609BCEC2C7A840A2A2B27 /* Debug */,
+				8E46965ABE43C70BFA4F09321BBD2D44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

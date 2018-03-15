@@ -1,0 +1,22 @@
+{
+  "name": "MSScrollControl",
+  "version": "0.1.0",
+  "summary": "A short description of MSScrollControl.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/masonchang1991/MSScrollControl",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "masonchang1991": "mason.chang@appimc.com"
+  },
+  "source": {
+    "git": "https://github.com/masonchang1991/MSScrollControl.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "MSScrollControl/Classes/**/*"
+}
