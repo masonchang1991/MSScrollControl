@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'MSScrollControl_Example' do
+  pod 'MSScrollControl', :path => '../'
+
+  target 'MSScrollControl_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
