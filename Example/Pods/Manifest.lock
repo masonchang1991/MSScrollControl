@@ -1,5 +1,5 @@
 PODS:
-  - MSScrollControl (0.1.0)
+  - MSScrollControl (0.2.0)
 
 DEPENDENCIES:
   - MSScrollControl (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  MSScrollControl: d6f4354204fb4934127f96c6b1ff71a87dd1c35c
+  MSScrollControl: 63102441715bfe527aec064deca4ea2e41274499
 
 PODFILE CHECKSUM: 411fee7a27f3e68045bfa19eb2c8f99c939eb374
 

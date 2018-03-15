@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MSScrollControl
 
 class ViewController3: UIViewController {
     
