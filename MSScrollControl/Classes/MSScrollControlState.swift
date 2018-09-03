@@ -1,9 +1,9 @@
 //
 //  MSScrollControlState.swift
-//  MSScrollControlDemo
+//  LuluVideo
 //
-//  Created by Mason on 2018/3/15.
-//  Copyright © 2018年 Mason. All rights reserved.
+//  Created by Mason on 2018/3/6.
+//  Copyright © 2018年 appimc.com. All rights reserved.
 //
 
 import Foundation
@@ -42,4 +42,3 @@ enum MSScrollControlState {
         return !(lhs == rhs)
     }
 }
-

@@ -13,9 +13,14 @@ class ViewController2: UIViewController {
     
     @IBOutlet weak var demoCollectionView: UICollectionView!
     
+    override func loadView() {
+        super.loadView()
+        self.edgesForExtendedLayout = []
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = UIColor.blue
         demoCollectionView.delegate = self
         demoCollectionView.dataSource = self
         //        demoCollectionView.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
@@ -25,14 +30,9 @@ class ViewController2: UIViewController {
         
         configScrollView()
         
-        
-        
-        if #available(iOS 11.0, *) {
-            self.demoCollectionView.contentInsetAdjustmentBehavior = .never
-        } else {
-            self.automaticallyAdjustsScrollViewInsets = false
-        }
+
     }
+    
     
     func configScrollView() {
         
@@ -53,15 +53,7 @@ class ViewController2: UIViewController {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollView.msScrollControl?.barUpdate()
-        NSObject.cancelPreviousPerformRequests(withTarget: self)
-        self.perform(#selector(scrollViewDidEndScrollingAnimation(_:)), with: scrollView, afterDelay: 0.0)
     }
-    
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        scrollView.msScrollControl?.barEndUpdate()
-        NSObject.cancelPreviousPerformRequests(withTarget: self)
-    }
-    
 }
 
 extension ViewController2: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -79,7 +71,13 @@ extension ViewController2: UICollectionViewDelegate, UICollectionViewDataSource,
             return UICollectionViewCell()
         }
         
-        cell.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
+        if indexPath.row <= 3 {
+            cell.backgroundColor = UIColor.red
+        } else {
+            cell.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
+        }
+        
+//        cell.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
         
         return cell
     }

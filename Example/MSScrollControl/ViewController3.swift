@@ -44,16 +44,7 @@ class ViewController3: UIViewController {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollView.msScrollControl?.barUpdate()
-        NSObject.cancelPreviousPerformRequests(withTarget: self)
-        self.perform(#selector(scrollViewDidEndScrollingAnimation(_:)), with: scrollView, afterDelay: 0.0)
     }
-    
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        scrollView.msScrollControl?.barEndUpdate()
-        NSObject.cancelPreviousPerformRequests(withTarget: self)
-    }
-    
-    
 }
 
 extension ViewController3: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

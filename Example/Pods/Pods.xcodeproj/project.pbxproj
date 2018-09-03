@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00EF4D582FD929CA784120EAF433C7D6 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF208E736AD3460C82A7FE8F20C25D1 /* ReplaceMe.swift */; };
 		196C6CC2FCE9586B4BFC41CFDAD58FFC /* MSScrollControlParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE99193CBF1CB2BA1C3968249C80A8B /* MSScrollControlParameter.swift */; };
 		1EC8D90B78FA19A93803F384F3A6F451 /* Pods-MSScrollControl_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E63BE774B3632EB550E583ECB51F8EF /* Pods-MSScrollControl_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4806D849AE1FFB48793E72F93507C29F /* MSScrollControl-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C1F190A8CAB613F95A06E49F108D9C /* MSScrollControl-dummy.m */; };
@@ -37,10 +36,10 @@
 /* Begin PBXFileReference section */
 		063CC28279537160619DC50C4DBBB1EC /* MSScrollControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MSScrollControl.swift; path = MSScrollControl/Classes/MSScrollControl.swift; sourceTree = "<group>"; };
 		0AE99193CBF1CB2BA1C3968249C80A8B /* MSScrollControlParameter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MSScrollControlParameter.swift; path = MSScrollControl/Classes/MSScrollControlParameter.swift; sourceTree = "<group>"; };
-		0BE7B8C9D72675C754CCF09C235E090C /* Pods_MSScrollControl_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MSScrollControl_Tests.framework; path = "Pods-MSScrollControl_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BE7B8C9D72675C754CCF09C235E090C /* Pods_MSScrollControl_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MSScrollControl_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28675DAA01F139EEDBF61A80AB238816 /* Pods-MSScrollControl_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MSScrollControl_Example-resources.sh"; sourceTree = "<group>"; };
 		2D7C87140439A86A6B3D135809C04F65 /* Pods-MSScrollControl_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MSScrollControl_Tests-umbrella.h"; sourceTree = "<group>"; };
-		2DA894657998A122F9006694AA56EFFD /* Pods-MSScrollControl_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MSScrollControl_Example.modulemap"; sourceTree = "<group>"; };
+		2DA894657998A122F9006694AA56EFFD /* Pods-MSScrollControl_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MSScrollControl_Example.modulemap"; sourceTree = "<group>"; };
 		31EE51A400CF2097D24DED90DBBEEBFA /* Pods-MSScrollControl_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MSScrollControl_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		327CC19867F1C254264097F25BF5E17C /* MSScrollControl.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MSScrollControl.xcconfig; sourceTree = "<group>"; };
 		342B3C961EEDE9CC7E6868662A6CCBA2 /* Pods-MSScrollControl_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MSScrollControl_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -50,13 +49,12 @@
 		67191C068C4DE74FA9C72003BC9C9C0E /* Pods-MSScrollControl_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MSScrollControl_Example-frameworks.sh"; sourceTree = "<group>"; };
 		7661BA0F57A4F7D8B407C0F8BD4B2E2A /* Pods-MSScrollControl_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MSScrollControl_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		7D741F49E906BE608007DA972C0E5460 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7DF208E736AD3460C82A7FE8F20C25D1 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = MSScrollControl/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
 		80E1827A3FADC035CE0A82D5CCEDA341 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		86BBB20426271019758AB29097A38993 /* MSScrollControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MSScrollControl.framework; path = MSScrollControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86BBB20426271019758AB29097A38993 /* MSScrollControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MSScrollControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8966C950A2AB8FD1CAFEC21106ADA691 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A138D812D06CCF124D971516197F517 /* MSScrollControl-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MSScrollControl-prefix.pch"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		94C9A99F69BC4E6038E3792B9161C327 /* Pods_MSScrollControl_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MSScrollControl_Example.framework; path = "Pods-MSScrollControl_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		94C9A99F69BC4E6038E3792B9161C327 /* Pods_MSScrollControl_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MSScrollControl_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E63BE774B3632EB550E583ECB51F8EF /* Pods-MSScrollControl_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MSScrollControl_Example-umbrella.h"; sourceTree = "<group>"; };
 		A15CFF3F3E8F8E9187CA233BF4BB0846 /* Pods-MSScrollControl_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MSScrollControl_Tests-dummy.m"; sourceTree = "<group>"; };
 		A2EB9D4B7F612650DF341E57507E730F /* Pods-MSScrollControl_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MSScrollControl_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -64,13 +62,13 @@
 		AC7036D9D0A26777D581E093BFD0CCB8 /* Pods-MSScrollControl_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MSScrollControl_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		AD905D12EA468E151A7C6FFF4DB43F77 /* MSScrollControlState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MSScrollControlState.swift; path = MSScrollControl/Classes/MSScrollControlState.swift; sourceTree = "<group>"; };
 		B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		C119C2E45322ED5CFFA2864EED44C53B /* Pods-MSScrollControl_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MSScrollControl_Tests.modulemap"; sourceTree = "<group>"; };
+		C119C2E45322ED5CFFA2864EED44C53B /* Pods-MSScrollControl_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MSScrollControl_Tests.modulemap"; sourceTree = "<group>"; };
 		CEFF056DB1B1865BF8E55356B2EA0B62 /* Pods-MSScrollControl_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MSScrollControl_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		D6C1F190A8CAB613F95A06E49F108D9C /* MSScrollControl-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MSScrollControl-dummy.m"; sourceTree = "<group>"; };
 		D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		DE39591CF6EB829203DF2B9504554A12 /* Pods-MSScrollControl_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MSScrollControl_Tests-resources.sh"; sourceTree = "<group>"; };
 		EA8EE172E5AC3D8A98A4A559D97FA4FD /* MSScrollControl + UIScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MSScrollControl + UIScrollView.swift"; path = "MSScrollControl/Classes/MSScrollControl + UIScrollView.swift"; sourceTree = "<group>"; };
-		F76FD7C36C96353B97621C023735D758 /* MSScrollControl.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MSScrollControl.modulemap; sourceTree = "<group>"; };
+		F76FD7C36C96353B97621C023735D758 /* MSScrollControl.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MSScrollControl.modulemap; sourceTree = "<group>"; };
 		F8C5E4A3F61BF6CDF635A5562F244985 /* MSScrollControl-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MSScrollControl-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,7 +108,6 @@
 				EA8EE172E5AC3D8A98A4A559D97FA4FD /* MSScrollControl + UIScrollView.swift */,
 				0AE99193CBF1CB2BA1C3968249C80A8B /* MSScrollControlParameter.swift */,
 				AD905D12EA468E151A7C6FFF4DB43F77 /* MSScrollControlState.swift */,
-				7DF208E736AD3460C82A7FE8F20C25D1 /* ReplaceMe.swift */,
 				9C652EF071CC3DD1CCFA7CCED99884C1 /* Support Files */,
 			);
 			name = MSScrollControl;
@@ -358,7 +355,6 @@
 				CC8BA8F92EFFBC806A05B92144AABC35 /* MSScrollControl.swift in Sources */,
 				196C6CC2FCE9586B4BFC41CFDAD58FFC /* MSScrollControlParameter.swift in Sources */,
 				80FB05C2B5928E225561E05888B88792 /* MSScrollControlState.swift in Sources */,
-				00EF4D582FD929CA784120EAF433C7D6 /* ReplaceMe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

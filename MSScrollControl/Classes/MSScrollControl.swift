@@ -9,401 +9,449 @@
 import Foundation
 import UIKit
 
-public class MSScrollControl {
+public class MSScrollControl: NSObject {
     
-    var scrollView: UIScrollView = UIScrollView()
+    enum UpdateType {
+        case transform
+        case changeFrame
+    }
     
+    unowned var scrollView: UIScrollView = UIScrollView()
+    
+    // object
+    private weak var viewController: UIViewController?
+    private weak var tabbarController: UITabBarController?
+    private weak var navController: UINavigationController?
+    private(set) var statusBarView: UIView!
+    
+    // origin value
+    private var originVCFrame: CGRect = .zero
+//    private var originNavCFrame: CGRect = .zero
+    private var originNavBarFrame: CGRect = .zero
+    private var originTabCFrame: CGRect = .zero
+    private var originTabbarFrame: CGRect = .zero
+    private var originStatusBarViewFrame: CGRect = .zero
+    private var topMaxVariation: CGFloat = 0.0
+    private(set) var statusBarHeight: CGFloat = 0.0
+    private(set) var tabbarHeight: CGFloat = 0.0
+    private(set) var navbarHeight: CGFloat = 0.0
+    
+    // variation value
     private var lastOffset = CGPoint(x: 0.0, y: 0.0)
-    
-    private var originVCHeight: CGFloat = 0.0
-    
-    private var originVCFrame: CGRect = CGRect.zero
-    
-    private var navbarHeight: CGFloat = 0.0
-    
-    private var tabbarHeight: CGFloat = 0.0
-    
-    private var isFirstScroll: Bool = true
-    
+    private var topVariation: CGFloat = 0.0
+    private var bottomVariation: CGFloat = 0.0
+    fileprivate var isFirstScroll: Bool = true
     private var isAnimating: Bool = false
     
-    private weak var viewController: UIViewController?
-    
-    private weak var tabbarController: UITabBarController? {
-        didSet {
-            if tabbarController != nil {
-                self.isTabBarScrollable = true
-            }
-        }
-    }
-    
-    private weak var navController: UINavigationController?
-    
-    private(set) var statusBarWindow: UIWindow!
-    
-    private(set) var statusBarHeight: CGFloat = 0.0
-    
-    private(set) var windowHeight: CGFloat = 0.0
-    
-    private(set) var totalTopFloatingHeight: CGFloat = 0.0
-    
-    private(set) var vcMaxHeight: CGFloat = 0.0
-    
-    
-    
-    // Because if you have navbar, your view does not contain navBar and statusBar
-    fileprivate var isVCAddedNavControllerTopSpace: Bool = false
-    
-    private(set) var changeRatio: CGFloat = 0.0
-    
-    private(set) var delayDistanceNeedToConsume: CGFloat = 0.0
-    
-    fileprivate var delayDistance: CGFloat = 0.0 {
-        didSet {
-            self.delayDistanceNeedToConsume = delayDistance
-        }
-    }
-    
+    // Parameters
+    private var updateType: UpdateType = .changeFrame
+    private var delayDistance: CGFloat = 0.0
     fileprivate var scrollHideSpeed: CGFloat = 1.0
-    
     fileprivate var topFloatingHeight: CGFloat = 0
-    
     fileprivate var isStatusBarScrollable = true
-    
     fileprivate var isTabBarScrollable = false
-    
     fileprivate var isTopFloatingSpaceScrollable = true
     
+    // observer
+    internal var currentState: ((MSScrollControlState) -> (Void))?
+    
+    // queue
+    private let updateQueue = DispatchQueue(label: "MSScrollControll.update",
+                                            qos: DispatchQoS.userInteractive)
+    
     private(set) var state: MSScrollControlState = .initial {
-        willSet {
-            if state != newValue {
-                //
-            }
-        }
         didSet {
             if state != oldValue {
-                
+                currentState?(state)
+            }
+        }
+    }
+    
+    private(set) var changeRatio: CGFloat = 0.0 {
+        didSet {
+            if changeRatio == 0.0 {
+                self.tabbarController?.tabBar.isUserInteractionEnabled = isTabBarScrollable ? true: false
+                self.state = .collapsed
+            } else if changeRatio == 1.0 {
+                self.tabbarController?.tabBar.isUserInteractionEnabled = isTabBarScrollable ? false: true
+                self.state = .collapsed
+            } else {
+                // avoid tap tabbar when user is scrolling (and isTabbarScrollable is true)
+                self.tabbarController?.tabBar.isUserInteractionEnabled = isTabBarScrollable ? false: true
             }
         }
     }
     
     public init(viewController: UIViewController, tabbarController: UITabBarController?) {
+        super.init()
         self.viewController = viewController
         self.tabbarController = tabbarController
-        if tabbarController != nil {
-            self.tabbarHeight = tabbarController!.tabBar.frame.height
+        if let tabbarController = tabbarController {
+            self.tabbarHeight = tabbarController.tabBar.frame.height
         }
         setupInitData()
     }
     
     public init(viewController: UIViewController, tabbarController: UITabBarController?, parameters: [MSScrollControlParameter]) {
+        super.init()
         self.viewController = viewController
         self.tabbarController = tabbarController
-        if tabbarController != nil {
-            self.tabbarHeight = tabbarController!.tabBar.frame.height
+        if let tabbarController = tabbarController {
+            self.tabbarHeight = tabbarController.tabBar.frame.height
         }
         self.configureMSScrollControl(parameters: parameters)
         setupInitData()
     }
     
     public init(viewController: UIViewController, tabbarController: UITabBarController?, navController: UINavigationController?, parameters: [MSScrollControlParameter]) {
+        super.init()
         self.viewController = viewController
         self.tabbarController = tabbarController
-        if tabbarController != nil {
-            self.tabbarHeight = tabbarController!.tabBar.frame.height
+        if let tabbarController = tabbarController {
+            self.tabbarHeight = tabbarController.tabBar.frame.height
         }
         self.navController = navController
-        if navController != nil {
-            self.navbarHeight = navController!.navigationBar.frame.height
+        if let navController = navController {
+            self.navbarHeight = navController.navigationBar.frame.height
         }
         self.configureMSScrollControl(parameters: parameters)
         setupInitData()
     }
     
-    public func setupInitData() {
-        guard let statusBarWindow = UIApplication.shared.value(forKey: "statusBarWindow") as? UIWindow else { return }
-        self.statusBarWindow = statusBarWindow
-        self.statusBarHeight = UIApplication.shared.statusBarFrame.height
-        self.windowHeight = UIScreen.main.bounds.height
-        self.totalTopFloatingHeight = (isStatusBarScrollable ? statusBarHeight: 0.0) +
+    func setupInitData() {
+        guard
+            let statusBarWindow = UIApplication.shared.value(forKey: "statusBarWindow") as? UIWindow,
+            let statusBarView = statusBarWindow.value(forKey: "statusBar") as? UIView else { return }
+        self.statusBarView = statusBarView
+        self.originStatusBarViewFrame = statusBarView.frame
+        self.statusBarHeight = statusBarView.bounds.height
+        self.topMaxVariation = (isStatusBarScrollable ? statusBarHeight: 0.0) +
             (isTopFloatingSpaceScrollable ? (topFloatingHeight + navbarHeight): 0.0)
     }
     
+    func storeOriginData() {
+        if let vc = viewController {
+            self.originVCFrame = vc.view.frame
+        }
+        if let nav = navController {
+//            self.originNavCFrame = nav.view.frame
+            self.originNavBarFrame = nav.navigationBar.frame
+        }
+        if let tabbar = tabbarController {
+            self.originTabCFrame = tabbar.view.frame
+            self.originTabbarFrame = tabbar.tabBar.frame
+        }
+    }
     
-    public func barUpdate() {
+    private func isOnDelayRange(scrollView: UIScrollView) -> Bool {
+        let contentOffset = scrollView.contentOffset
+        if contentOffset.y <= delayDistance {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func isOutOfBound(scrollView: UIScrollView) -> Bool {
+        let contentOffset = scrollView.contentOffset
+        let contentSize = scrollView.contentSize
+        let scrollViewHeight = scrollView.bounds.height
+        let scrollViewWidth = scrollView.bounds.width
+        
+        if contentOffset.x < 0 || contentOffset.y < 0 {
+            return true
+        } else if contentOffset.x + scrollViewWidth > contentSize.width {
+            return true
+        } else if contentOffset.y + scrollViewHeight > contentSize.height {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func adjustVCByUpdateType() {
+        switch updateType {
+        case .transform: break
+        case .changeFrame: break
+        }
+    }
+    
+    open func barUpdate() {
         
         if isAnimating { return }
+        if isOutOfBound(scrollView: scrollView) {
+//            restoreToOrigin()
+            return
+        }
         
         if isFirstScroll {
-            self.originVCHeight = viewController?.view.frame.height ?? UIScreen.main.bounds.height
-            self.originVCFrame = viewController?.view.frame ?? UIScreen.main.bounds
-            self.vcMaxHeight = originVCHeight +
-                totalTopFloatingHeight +
-                (isTabBarScrollable ? tabbarHeight: 0.0)
-            self.isFirstScroll = false
+            storeOriginData()
+            isFirstScroll = false
+            adjustVCByUpdateType()
         }
         
         // Calculate scroll distance
         let currentOffset = scrollView.contentOffset
         let distance =  currentOffset.y - lastOffset.y
         self.lastOffset = currentOffset
+
+        let isScrollDown = distance > 0
+        if isOnDelayRange(scrollView: scrollView) && isScrollDown { return }
         
-        // if there is a delay distance
-        if distance > 0 && self.delayDistanceNeedToConsume > 0 {
-            self.delayDistanceNeedToConsume -= distance
-            return
-        } else if self.changeRatio == 0 && distance < 0{
-            self.delayDistanceNeedToConsume = self.delayDistance
+        if isScrollDown {
+            self.state = .scrolling(.scrollDown)
+        } else {
+            self.state = .scrolling(.scrollUp)
         }
         
-        let scrollViewHeight = scrollView.frame.height
-        let scrollViewContentSize = scrollView.contentSize
-        
-        let currentOffsetBottom = currentOffset.y +
-        scrollViewHeight
-        
-        // avoid tap tabbar when user is scrolling
-        self.tabbarController?.tabBar.isUserInteractionEnabled = changeRatio == 0.0 ? true: false
-        
-        // if scroll direction is down && statusbar doesn't reach to top(y == -totalTopFloatingHeight) && bottom doesn't reach to scrollViewBottom && if currentOffSet.y - distance < 0 mean you are out of origin top, don't change frame
-        if distance > 0 && (statusBarWindow.frame.minY > -totalTopFloatingHeight || viewController?.view.frame.height != vcMaxHeight) && currentOffsetBottom + distance < scrollViewContentSize.height && currentOffset.y - distance >= 0 {
+        DispatchQueue.main.async {
+            self.updateStatusBarWith(distance: distance)
             
-            DispatchQueue.main.async {
-                self.state = .scrolling(.scrollDown)
-                self.updateStatusBarWith(distance: distance)
-                
-                if self.tabbarController != nil && self.isTabBarScrollable {
+            if self.isTopFloatingSpaceScrollable {
+                self.updateNavBar()
+            }
+            
+            if self.isTabBarScrollable {
+                self.updateTabbar()
+            }
+            
+            self.updateVCFrameWith()
+        }
+        
+//        self.updateStatusBarWith(distance: distance)
+//
+//        if self.isTopFloatingSpaceScrollable {
+//            self.updateNavBar()
+//        }
+//
+//        if self.isTabBarScrollable {
+//            self.updateTabbar()
+//        }
+//
+//        self.updateVCFrameWith()
+        
+        print("status", statusBarView.frame)
+        print("vc", viewController!.view.frame)
+        print("nav", navController?.view.frame)
+        print("tab", tabbarController!.view.frame)
+        
+        NSObject.cancelPreviousPerformRequests(withTarget: self)
+        self.perform(#selector(barEndUpdate),
+                     with: self,
+                     afterDelay: 0.1)
+    }
+    
+    @objc open func barEndUpdate() {
+        return
+        if isAnimating {
+            NSObject.cancelPreviousPerformRequests(withTarget: self)
+            return
+        }
+        
+        if self.changeRatio < 0.5 {
+            UIView.transition(with: scrollView, duration: 0.5, options: [.curveEaseIn], animations: {
+                self.isAnimating = true
+                self.updateStatusBarWith(changeRatio: 0.0)
+                if self.isTabBarScrollable {
                     self.updateTabbar()
                 }
                 
-                if self.navController != nil && self.isTopFloatingSpaceScrollable {
+                if self.isTopFloatingSpaceScrollable {
                     self.updateNavBar()
                 }
-                
-                self.updateVCFrameWith(distance: distance)
+                self.updateVCFrameWith()
+            }) { (_) in
+                self.isAnimating = false
+                self.tabbarController?.tabBar.isUserInteractionEnabled = true
+                self.state = .collapsed
+                NSObject.cancelPreviousPerformRequests(withTarget: self)
             }
             
-            // distance < 0 means scroll up
-            // currentOffsetBottom - distance < scrollViewContentSize.height is to prevent scroll out of bottom and rebound back
-            // currentOffset.y + distance >= 0 is to prevent scroll out of top
-        } else if distance < 0 && currentOffsetBottom - distance < scrollViewContentSize.height && currentOffset.y + distance >= 0 {
-            
-            DispatchQueue.main.async {
-                self.state = .scrolling(.scrollUp)
-                self.updateStatusBarWith(distance: distance)
+        } else if self.changeRatio >= 0.5 {
+            UIView.transition(with: scrollView, duration: 0.5, options: [.curveEaseIn], animations: {
+                self.isAnimating = true
+                self.updateStatusBarWith(changeRatio: 1.0)
                 
-                if self.tabbarController != nil && self.isTabBarScrollable {
+                if self.isTabBarScrollable {
                     self.updateTabbar()
                 }
                 
-                if self.navController != nil && self.isTopFloatingSpaceScrollable {
+                if self.isTopFloatingSpaceScrollable {
                     self.updateNavBar()
                 }
-                self.updateVCFrameWith(distance: distance)
+                self.updateVCFrameWith()
+            }) { (_) in
+                self.isAnimating = false
+                self.tabbarController?.tabBar.isUserInteractionEnabled = false
+                self.state = .expanded
+                NSObject.cancelPreviousPerformRequests(withTarget: self)
             }
+        } else {
+            NSObject.cancelPreviousPerformRequests(withTarget: self)
         }
     }
     
-    public func barEndUpdate() {
+    func restoreToOrigin() {
+    
+        if topVariation == 0.0 { return }
         
-        if isAnimating { return }
-        
-        if self.changeRatio < 0.5 && self.changeRatio > 0.0 {
-            
-            self.changeRatio = 0.0
-            
-            UIView.animate(withDuration: 0.15, animations: {
-                self.isAnimating = true
-                
-                self.statusBarWindow.transform = CGAffineTransform.identity
-                self.statusBarWindow.layoutIfNeeded()
-                
-                if self.tabbarController != nil && self.isTabBarScrollable {
-                    self.updateTabbar()
-                }
-                
-                if self.navController != nil && self.isTopFloatingSpaceScrollable {
-                    self.updateNavBar()
-                }
-                
-                self.viewController?.view.frame = CGRect(x: 0.0,
-                                                         y: self.originVCFrame.minY + self.statusBarWindow.frame.minY,
-                                                         width: self.originVCFrame.width,
-                                                         height: self.originVCHeight)
-                self.viewController?.view.layoutIfNeeded()
-                
-            }, completion: { (_) in
-                self.isAnimating = false
-                self.tabbarController?.tabBar.isUserInteractionEnabled = true
-            })
-            
-        } else if self.changeRatio >= 0.5 && self.changeRatio != 1.0 && self.scrollView.contentOffset.y > totalTopFloatingHeight {
-            
-            self.changeRatio = 1.0
-            
-            UIView.animate(withDuration: 0.15, animations: {
-                self.isAnimating = true
-                
-                self.statusBarWindow.transform = CGAffineTransform(translationX: 0, y: -self.totalTopFloatingHeight)
-                self.statusBarWindow.layoutIfNeeded()
-                
-                if self.tabbarController != nil && self.isTabBarScrollable {
-                    self.updateTabbar()
-                }
-                
-                if self.navController != nil && self.isTopFloatingSpaceScrollable {
-                    self.updateNavBar()
-                }
-                
-                self.viewController?.view.frame = CGRect(x: 0.0,
-                                                         y: self.originVCFrame.minY + self.statusBarWindow.frame.minY,
-                                                         width: self.originVCFrame.width,
-                                                         height: self.vcMaxHeight)
-                
-                self.viewController?.view.layoutIfNeeded()
-            }, completion: { (_) in
-                self.isAnimating = false
-                self.tabbarController?.tabBar.isUserInteractionEnabled = true
-            })
-            
-        } else if self.scrollView.contentOffset.y <= totalTopFloatingHeight {
-            
-            self.changeRatio = 0.0
-            
-            UIView.animate(withDuration: 0.15, animations: {
-                self.isAnimating = true
-                
-                self.statusBarWindow.transform = CGAffineTransform.identity
-                self.statusBarWindow.layoutIfNeeded()
-                
-                if self.tabbarController != nil && self.isTabBarScrollable {
-                    self.updateTabbar()
-                }
-                
-                if self.navController != nil && self.isTopFloatingSpaceScrollable {
-                    self.updateNavBar()
-                }
-                
-                self.viewController?.view.frame = CGRect(x: 0.0,
-                                                         y: self.originVCFrame.minY + self.statusBarWindow.frame.minY,
-                                                         width: self.originVCFrame.width,
-                                                         height: self.originVCHeight)
-                self.viewController?.view.layoutIfNeeded()
-                
-            }, completion: { (_) in
-                self.isAnimating = false
-                self.tabbarController?.tabBar.isUserInteractionEnabled = true
-            })
-        } else if self.changeRatio == 0.0 {
-            self.tabbarController?.tabBar.isUserInteractionEnabled = true
-            return
+        updateStatusBarWith(changeRatio: 0.0)
+        if isTabBarScrollable {
+            updateTabbar()
         }
+        if isTopFloatingSpaceScrollable {
+            updateNavBar()
+        }
+        updateVCFrameWith()
     }
     
-    public func restoreToOrigin() {
-        
-        if statusBarWindow.frame.minY == 0.0 {
-            return
+    func updateStatusBarWith(changeRatio: CGFloat) {
+        topVariation = -topMaxVariation * changeRatio
+        self.changeRatio = changeRatio
+        if changeRatio != 0.0 {
+            switch updateType {
+            case .transform:
+                statusBarView.transform = CGAffineTransform(translationX: 0, y: topVariation)
+            case .changeFrame:
+                var updateSBFrame = originStatusBarViewFrame
+                updateSBFrame.origin = CGPoint(x: originStatusBarViewFrame.minX,
+                                               y: topVariation)
+                statusBarView.frame = updateSBFrame
+            }
+        } else {
+            switch updateType {
+            case .transform:
+                statusBarView.transform = CGAffineTransform.identity
+            case .changeFrame:
+                statusBarView.frame = originStatusBarViewFrame
+            }
         }
-        
-        self.statusBarWindow.transform = CGAffineTransform(translationX: 0, y: 0)
-        self.statusBarWindow.layoutIfNeeded()
-        
-        self.changeRatio = 0.0
-        if self.tabbarController != nil && self.isTabBarScrollable {
-            self.updateTabbar()
-        }
-        
-        if self.navController != nil && self.isTopFloatingSpaceScrollable {
-            self.updateNavBar()
-        }
-        
-        self.viewController?.view.frame = CGRect(x: 0.0,
-                                                 y: self.originVCFrame.minY + self.statusBarWindow.frame.minY,
-                                                 width: self.originVCFrame.width,
-                                                 height: self.originVCHeight)
-        self.viewController?.view.layoutIfNeeded()
     }
     
     func updateStatusBarWith(distance: CGFloat) {
-        
-        let statusBarNextYPosition = statusBarWindow.frame.minY - distance * scrollHideSpeed
-        
-        
-        var statusBarNewYPosition: CGFloat = 0.0
+        topVariation = topVariation - distance * scrollHideSpeed
         if state == .scrolling(.scrollDown) {
             // if statusBarNextYPosition less than -floatingViewHeight, set statusBarNewYPosition to -floatingViewHeight
-            statusBarNewYPosition = statusBarNextYPosition <= -totalTopFloatingHeight ? -totalTopFloatingHeight: statusBarNextYPosition
+            topVariation = topVariation <= -topMaxVariation ? -topMaxVariation: topVariation
         } else {
             // if statusBar.frame.y > 0, adjust it to zero
-            statusBarNewYPosition = statusBarNextYPosition >= 0 ? 0: statusBarNextYPosition
+            topVariation = topVariation >= 0 ? 0: topVariation
         }
         // change statusBar y position
-        self.statusBarWindow.transform = CGAffineTransform(translationX: 0, y: statusBarNewYPosition)
-        self.statusBarWindow.layoutIfNeeded()
-        self.changeRatio = statusBarWindow.frame.minY / -(totalTopFloatingHeight)
+        changeRatio = topVariation / -(topMaxVariation)
+        switch updateType {
+        case .transform:
+            statusBarView.transform = CGAffineTransform(translationX: 0, y: topVariation)
+        case .changeFrame:
+            var updateSBFrame = originStatusBarViewFrame
+            updateSBFrame.origin = CGPoint(x: originStatusBarViewFrame.minX,
+                                           y: topVariation)
+            statusBarView.frame = updateSBFrame
+        }
     }
     
     func updateTabbar() {
-        
-        guard let tabbarController = self.tabbarController else { return }
-        
-        let tabbarNewHeight = windowHeight + self.tabbarHeight * self.changeRatio
-        var tabbarFrame = tabbarController.view.frame
-        tabbarFrame.size = CGSize(width: tabbarFrame.size.width,
-                                  height: tabbarNewHeight)
-        tabbarController.view.frame = tabbarFrame
-        tabbarController.view.layoutIfNeeded()
+        if let tabbarController = self.tabbarController {
+            bottomVariation = tabbarHeight * changeRatio
+            if changeRatio != 0.0 {
+                switch updateType {
+                case .transform:
+                    tabbarController.tabBar.transform = CGAffineTransform(translationX: 0.0,
+                                                                          y: bottomVariation)
+                case .changeFrame:
+                    //MARK: - You should never attempt to manipulate the UITabBar object itself stored in this property.
+                    let tabbarCNewHeight = originTabCFrame.height + bottomVariation
+                    let tabbarFrame = CGRect(origin: CGPoint(x: originTabCFrame.minX,
+                                                             y: originTabCFrame.minY),
+                                             size: CGSize(width: originTabCFrame.width,
+                                                          height: tabbarCNewHeight))
+                    tabbarController.view.frame = tabbarFrame
+                }
+            } else {
+                switch updateType {
+                case .transform:
+                    tabbarController.tabBar.transform = CGAffineTransform.identity
+                case .changeFrame:
+                    tabbarController.view.frame = originTabCFrame
+                }
+            }
+        }
     }
     
     func updateNavBar() {
-        
-        guard let navController = self.navController else { return }
-        
-        var navFrame = navController.navigationBar.frame
-
-        navFrame.origin = CGPoint(x: navFrame.origin.x ,
-                                  y: self.statusBarWindow.frame.minY + self.statusBarHeight)
-        navController.navigationBar.frame = navFrame
-        navController.navigationBar.layoutIfNeeded()
+        if let navController = self.navController {
+            if changeRatio != 0.0 {
+                switch updateType {
+                case .transform :
+                    navController.navigationBar.transform = CGAffineTransform(translationX: 0.0,
+                                                                              y: topVariation)
+                case .changeFrame:
+                    //MARK: - can't directly change navigationBar frame, so change navigationController frame
+                    let updateNavBarFrame = CGRect(x: originNavBarFrame.minX,
+                                                   y: originNavBarFrame.minY + topVariation,
+                                                   width: originNavBarFrame.width,
+                                                   height: originNavBarFrame.height)
+                    navController.navigationBar.frame = updateNavBarFrame
+                    navController.navigationBar.layoutIfNeeded()
+                    
+                }
+            } else {
+                switch updateType {
+                case .transform :
+                    navController.navigationBar.transform = CGAffineTransform.identity
+                    
+                case .changeFrame:
+                    //MARK: - can't directly change navigationBar frame, so change navigationController frame
+                    navController.navigationBar.frame = originNavBarFrame
+                    navController.navigationBar.layoutIfNeeded()
+                }
+            }
+        }
     }
     
-    func updateVCFrameWith(distance: CGFloat) {
-        
-        guard let viewController = self.viewController else { return }
-        
-        let vcNextHeight = viewController.view.frame.height +
-            distance * scrollHideSpeed
-        
-        var vcNewHeight: CGFloat = 0.0
-        
-        if state == .scrolling(.scrollDown) {
-            vcNewHeight = vcNextHeight >= vcMaxHeight ? vcMaxHeight: vcNextHeight
-        } else {
-            vcNewHeight = vcNextHeight <= self.originVCHeight ? self.originVCHeight: vcNextHeight
+    func updateVCFrameWith(distance: CGFloat = 0.0) {
+        if let vc = self.viewController {
+            if changeRatio != 0.0 {
+                let vcNextHeight = originVCFrame.height + (-topVariation) + bottomVariation
+                let vcNextMinY = originVCFrame.minY + topVariation
+                let vcNewFrame = CGRect(x: originVCFrame.minX,
+                                        y: vcNextMinY,
+                                        width: originVCFrame.width,
+                                        height: vcNextHeight)
+                switch updateType {
+                case .transform:
+                    let newTransform = transformFormFrame(originVCFrame, to: vcNewFrame)
+                    vc.view.transform = newTransform
+                case .changeFrame:
+                    vc.view.frame = vcNewFrame
+                }
+            } else {
+                switch updateType {
+                case .transform:
+                    vc.view.transform = CGAffineTransform.identity
+                case.changeFrame:
+                    vc.view.frame = originVCFrame
+                }
+            }
         }
-        
-        viewController.view.frame = CGRect(x: 0.0,
-                                           y: self.originVCFrame.minY + statusBarWindow.frame.minY,
-                                           width: viewController.view.frame.width,
-                                           height: vcNewHeight)
-        viewController.view.layoutIfNeeded()
     }
     
     deinit {
         print("MSScrollControll gone")
     }
-    
 }
 
 extension MSScrollControl {
     
-    func configureMSScrollControl(parameters: [MSScrollControlParameter]) {
+    open func configureMSScrollControl(parameters: [MSScrollControlParameter]) {
+        
+        if !isFirstScroll {
+            restoreToOrigin()
+        }
+        self.isFirstScroll = true
         
         for parameter in parameters {
             switch (parameter) {
-            case .delayDistance(let value):
-                self.delayDistance = value
             case .isStatusBarScrollable(let value):
                 self.isStatusBarScrollable = value
             case .isTabBarScrollable(let value):
@@ -414,6 +462,8 @@ extension MSScrollControl {
                 self.scrollHideSpeed = value
             case .topFloatingHeight(let value):
                 self.topFloatingHeight = value
+            case .delayDistance(let value):
+                self.delayDistance = value
             }
         }
     }
@@ -426,3 +476,4 @@ extension MSScrollControl {
         return transform
     }
 }
+

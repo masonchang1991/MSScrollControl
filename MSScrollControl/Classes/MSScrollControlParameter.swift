@@ -7,13 +7,12 @@
 //
 
 import Foundation
-import UIKit
 
 public enum MSScrollControlParameter {
-    case delayDistance(CGFloat)
     case scrollHideSpeed(CGFloat)
     case topFloatingHeight(CGFloat)
     case isStatusBarScrollable(Bool)
     case isTabBarScrollable(Bool)
     case isTopFloatingSpaceScrollable(Bool)
+    case delayDistance(CGFloat)
 }

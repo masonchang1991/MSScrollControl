@@ -22,7 +22,7 @@ pod 'MSScrollControl'
 
 ## Author
 
-masonchang1991, mason.chang@appimc.com
+masonchang1991, masonchang1991@gmail.com
 
 ## License
 
