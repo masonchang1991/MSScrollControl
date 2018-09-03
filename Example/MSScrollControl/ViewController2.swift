@@ -15,7 +15,7 @@ class ViewController2: UIViewController {
     
     override func loadView() {
         super.loadView()
-        self.edgesForExtendedLayout = []
+//        self.edgesForExtendedLayout = []
     }
     
     override func viewDidLoad() {

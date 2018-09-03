@@ -28,6 +28,7 @@ public class MSScrollControl: NSObject {
     private var originVCFrame: CGRect = .zero
 //    private var originNavCFrame: CGRect = .zero
     private var originNavBarFrame: CGRect = .zero
+    private var originNavCFrame: CGRect = .zero
     private var originTabCFrame: CGRect = .zero
     private var originTabbarFrame: CGRect = .zero
     private var originStatusBarViewFrame: CGRect = .zero
@@ -134,7 +135,7 @@ public class MSScrollControl: NSObject {
             self.originVCFrame = vc.view.frame
         }
         if let nav = navController {
-//            self.originNavCFrame = nav.view.frame
+            self.originNavCFrame = nav.view.frame
             self.originNavBarFrame = nav.navigationBar.frame
         }
         if let tabbar = tabbarController {
@@ -204,36 +205,25 @@ public class MSScrollControl: NSObject {
             self.state = .scrolling(.scrollUp)
         }
         
-        DispatchQueue.main.async {
+//        DispatchQueue.main.async {
             self.updateStatusBarWith(distance: distance)
-            
-            if self.isTopFloatingSpaceScrollable {
-                self.updateNavBar()
-            }
             
             if self.isTabBarScrollable {
                 self.updateTabbar()
             }
             
+            if self.isTopFloatingSpaceScrollable {
+                self.updateNavBar()
+            }
+            
             self.updateVCFrameWith()
-        }
-        
-//        self.updateStatusBarWith(distance: distance)
-//
-//        if self.isTopFloatingSpaceScrollable {
-//            self.updateNavBar()
 //        }
-//
-//        if self.isTabBarScrollable {
-//            self.updateTabbar()
-//        }
-//
-//        self.updateVCFrameWith()
-        
-        print("status", statusBarView.frame)
-        print("vc", viewController!.view.frame)
-        print("nav", navController?.view.frame)
+    
+        print("nav", navController!.view.frame)
         print("tab", tabbarController!.view.frame)
+        print("vc", viewController!.view.frame)
+        print("vcR", viewController?.view.convert(CGPoint.zero, to: UIApplication.shared.windows.first?.rootViewController?.view))
+        
         
         NSObject.cancelPreviousPerformRequests(withTarget: self)
         self.perform(#selector(barEndUpdate),
@@ -360,19 +350,23 @@ public class MSScrollControl: NSObject {
                                                                           y: bottomVariation)
                 case .changeFrame:
                     //MARK: - You should never attempt to manipulate the UITabBar object itself stored in this property.
-                    let tabbarCNewHeight = originTabCFrame.height + bottomVariation
-                    let tabbarFrame = CGRect(origin: CGPoint(x: originTabCFrame.minX,
-                                                             y: originTabCFrame.minY),
-                                             size: CGSize(width: originTabCFrame.width,
-                                                          height: tabbarCNewHeight))
-                    tabbarController.view.frame = tabbarFrame
+//                    let tabbarCNewHeight = originTabCFrame.height + bottomVariation
+//                    let tabbarFrame = CGRect(origin: CGPoint(x: originTabCFrame.minX,
+//                                                             y: originTabCFrame.minY),
+//                                             size: CGSize(width: originTabCFrame.width,
+//                                                          height: tabbarCNewHeight))
+//                    tabbarController.view.frame = tabbarFrame
+                    let updateTabbarFrame = CGRect(origin: CGPoint(x: originTabbarFrame.minX,
+                                                                   y: originTabbarFrame.minY + bottomVariation),
+                                                   size: originTabbarFrame.size)
+                    tabbarController.tabBar.frame = updateTabbarFrame
                 }
             } else {
                 switch updateType {
                 case .transform:
                     tabbarController.tabBar.transform = CGAffineTransform.identity
                 case .changeFrame:
-                    tabbarController.view.frame = originTabCFrame
+                    tabbarController.tabBar.frame = originTabbarFrame
                 }
             }
         }
@@ -382,7 +376,7 @@ public class MSScrollControl: NSObject {
         if let navController = self.navController {
             if changeRatio != 0.0 {
                 switch updateType {
-                case .transform :
+                case .transform:
                     navController.navigationBar.transform = CGAffineTransform(translationX: 0.0,
                                                                               y: topVariation)
                 case .changeFrame:
@@ -392,18 +386,17 @@ public class MSScrollControl: NSObject {
                                                    width: originNavBarFrame.width,
                                                    height: originNavBarFrame.height)
                     navController.navigationBar.frame = updateNavBarFrame
-                    navController.navigationBar.layoutIfNeeded()
                     
                 }
             } else {
                 switch updateType {
-                case .transform :
+                case .transform:
                     navController.navigationBar.transform = CGAffineTransform.identity
                     
                 case .changeFrame:
                     //MARK: - can't directly change navigationBar frame, so change navigationController frame
                     navController.navigationBar.frame = originNavBarFrame
-                    navController.navigationBar.layoutIfNeeded()
+//                    navController.view.frame = originNavCFrame
                 }
             }
         }
@@ -413,6 +406,7 @@ public class MSScrollControl: NSObject {
         if let vc = self.viewController {
             if changeRatio != 0.0 {
                 let vcNextHeight = originVCFrame.height + (-topVariation) + bottomVariation
+                
                 let vcNextMinY = originVCFrame.minY + topVariation
                 let vcNewFrame = CGRect(x: originVCFrame.minX,
                                         y: vcNextMinY,
