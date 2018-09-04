@@ -15,12 +15,14 @@ class ViewController2: UIViewController {
     
     override func loadView() {
         super.loadView()
-//        self.edgesForExtendedLayout = []
+//        self.automaticallyAdjustsScrollViewInsets = false
+//        self.edgesForExtendedLayout = [.top, .bottom]
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.blue
+
         demoCollectionView.delegate = self
         demoCollectionView.dataSource = self
         //        demoCollectionView.backgroundColor = UIColor.blue.withAlphaComponent(0.2)

@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oZ5-cd-xSO">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="J8N-z7-Ui8">
                                     <size key="itemSize" width="50" height="50"/>
@@ -42,13 +42,15 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="oZ5-cd-xSO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="AGE-ek-0yD"/>
-                            <constraint firstItem="oZ5-cd-xSO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Osu-5I-ibd"/>
+                            <constraint firstItem="oZ5-cd-xSO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Osu-5I-ibd"/>
                             <constraint firstAttribute="trailing" secondItem="oZ5-cd-xSO" secondAttribute="trailing" id="kJK-P8-luj"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oZ5-cd-xSO" secondAttribute="bottom" id="lGh-Q1-NVC"/>
+                            <constraint firstAttribute="bottom" secondItem="oZ5-cd-xSO" secondAttribute="bottom" id="lGh-Q1-NVC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="yvk-UQ-rBK"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="demoCollectionView" destination="oZ5-cd-xSO" id="QEf-7C-GFT"/>
                     </connections>
@@ -66,7 +68,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jK9-33-dtC">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4eT-ja-C20">
                                     <size key="itemSize" width="50" height="50"/>
@@ -90,12 +92,13 @@
                         <constraints>
                             <constraint firstItem="jK9-33-dtC" firstAttribute="leading" secondItem="uye-X0-65q" secondAttribute="leading" id="7F3-Cs-caW"/>
                             <constraint firstItem="uye-X0-65q" firstAttribute="trailing" secondItem="jK9-33-dtC" secondAttribute="trailing" id="MDg-LK-TMU"/>
-                            <constraint firstItem="uye-X0-65q" firstAttribute="bottom" secondItem="jK9-33-dtC" secondAttribute="bottom" id="giV-D0-2Iv"/>
-                            <constraint firstItem="jK9-33-dtC" firstAttribute="top" secondItem="qRa-Hy-6VP" secondAttribute="top" constant="20" id="uEM-On-zRK"/>
+                            <constraint firstAttribute="bottom" secondItem="jK9-33-dtC" secondAttribute="bottom" id="giV-D0-2Iv"/>
+                            <constraint firstItem="jK9-33-dtC" firstAttribute="top" secondItem="qRa-Hy-6VP" secondAttribute="top" id="uEM-On-zRK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uye-X0-65q"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="8tx-og-a7P"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="demoCollectionView" destination="jK9-33-dtC" id="luD-RQ-npI"/>
                     </connections>

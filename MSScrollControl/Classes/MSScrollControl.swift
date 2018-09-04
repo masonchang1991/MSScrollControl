@@ -26,7 +26,6 @@ public class MSScrollControl: NSObject {
     
     // origin value
     private var originVCFrame: CGRect = .zero
-//    private var originNavCFrame: CGRect = .zero
     private var originNavBarFrame: CGRect = .zero
     private var originNavCFrame: CGRect = .zero
     private var originTabCFrame: CGRect = .zero
@@ -49,7 +48,7 @@ public class MSScrollControl: NSObject {
     private var delayDistance: CGFloat = 0.0
     fileprivate var scrollHideSpeed: CGFloat = 1.0
     fileprivate var topFloatingHeight: CGFloat = 0
-    fileprivate var isStatusBarScrollable = true
+//    fileprivate var isStatusBarScrollable = true
     fileprivate var isTabBarScrollable = false
     fileprivate var isTopFloatingSpaceScrollable = true
     
@@ -126,7 +125,7 @@ public class MSScrollControl: NSObject {
         self.statusBarView = statusBarView
         self.originStatusBarViewFrame = statusBarView.frame
         self.statusBarHeight = statusBarView.bounds.height
-        self.topMaxVariation = (isStatusBarScrollable ? statusBarHeight: 0.0) +
+        self.topMaxVariation = statusBarHeight +
             (isTopFloatingSpaceScrollable ? (topFloatingHeight + navbarHeight): 0.0)
     }
     
@@ -172,7 +171,9 @@ public class MSScrollControl: NSObject {
     
     func adjustVCByUpdateType() {
         switch updateType {
-        case .transform: break
+        case .transform:
+            guard let vc = viewController else { return }
+            vc.edgesForExtendedLayout = [.top, .bottom]
         case .changeFrame: break
         }
     }
@@ -205,7 +206,7 @@ public class MSScrollControl: NSObject {
             self.state = .scrolling(.scrollUp)
         }
         
-//        DispatchQueue.main.async {
+        if Thread.isMainThread {
             self.updateStatusBarWith(distance: distance)
             
             if self.isTabBarScrollable {
@@ -217,14 +218,22 @@ public class MSScrollControl: NSObject {
             }
             
             self.updateVCFrameWith()
-//        }
-    
-        print("nav", navController!.view.frame)
-        print("tab", tabbarController!.view.frame)
-        print("vc", viewController!.view.frame)
-        print("vcR", viewController?.view.convert(CGPoint.zero, to: UIApplication.shared.windows.first?.rootViewController?.view))
-        
-        
+        } else {
+            DispatchQueue.main.async {
+                self.updateStatusBarWith(distance: distance)
+                
+                if self.isTabBarScrollable {
+                    self.updateTabbar()
+                }
+                
+                if self.isTopFloatingSpaceScrollable {
+                    self.updateNavBar()
+                }
+                
+                self.updateVCFrameWith()
+            }
+        }
+
         NSObject.cancelPreviousPerformRequests(withTarget: self)
         self.perform(#selector(barEndUpdate),
                      with: self,
@@ -447,7 +456,9 @@ extension MSScrollControl {
         for parameter in parameters {
             switch (parameter) {
             case .isStatusBarScrollable(let value):
-                self.isStatusBarScrollable = value
+//                self.isStatusBarScrollable = value
+                //TODO: - add this func
+                break
             case .isTabBarScrollable(let value):
                 self.isTabBarScrollable = value
             case .isTopFloatingSpaceScrollable(let value):
