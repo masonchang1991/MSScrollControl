@@ -44,7 +44,7 @@ public class MSScrollControl: NSObject {
     private var isAnimating: Bool = false
     
     // Parameters
-    private var updateType: UpdateType = .changeFrame
+    private var updateType: UpdateType = .transform
     private var delayDistance: CGFloat = 0.0
     fileprivate var scrollHideSpeed: CGFloat = 1.0
     fileprivate var topFloatingHeight: CGFloat = 0
@@ -171,7 +171,7 @@ public class MSScrollControl: NSObject {
     
     func adjustVCByUpdateType() {
         switch updateType {
-        case .transform:
+        case .transform: break
             guard let vc = viewController else { return }
             vc.edgesForExtendedLayout = [.top, .bottom]
         case .changeFrame: break

@@ -16,16 +16,23 @@ class ViewController3: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "MS-Demo3"
+        self.automaticallyAdjustsScrollViewInsets = false
+        setupView()
+        setupCollectionView()
+        configScrollView()
+    }
+    
+    func setupView() {
+        self.view.backgroundColor = UIColor.red.withAlphaComponent(0.5)
+    }
+    
+    func setupCollectionView() {
         demoCollectionView.delegate = self
         demoCollectionView.dataSource = self
         demoCollectionView.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
-        self.title = "MS-Demo3"
-        
-        self.view.backgroundColor = UIColor.red.withAlphaComponent(0.5)
-        configScrollView()
-        
-        self.automaticallyAdjustsScrollViewInsets = false
     }
+    
     
     func configScrollView() {
         
@@ -37,9 +44,10 @@ class ViewController3: UIViewController {
             .delayDistance(0.0)
         ]
         
-        self.demoCollectionView.msScrollControl = MSScrollControl(viewController: self,
-                                                                  tabbarController: self.tabBarController,
-                                                                  parameters: parameters)
+        let scrollControl = MSScrollControl(viewController: self,
+                                            tabbarController: tabBarController,
+                                            parameters: parameters)
+        self.demoCollectionView.msScrollControl = scrollControl
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -74,9 +82,4 @@ extension ViewController3: UICollectionViewDelegate, UICollectionViewDataSource,
         
         return CGSize(width: width, height: height)
     }
-    
-    
 }
-
-
-

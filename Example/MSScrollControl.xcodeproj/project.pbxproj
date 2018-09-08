@@ -15,6 +15,7 @@
 		6DF73B4709731821747A1DDB /* Pods_MSScrollControl_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E03738530D6A510E1346203E /* Pods_MSScrollControl_Tests.framework */; };
 		938649BA205A7A590038516F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 938649B9205A7A590038516F /* Main.storyboard */; };
 		938649BC205A7A750038516F /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938649BB205A7A750038516F /* ViewController2.swift */; };
+		939C316721437DD50090219B /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939C316621437DD50090219B /* ViewController4.swift */; };
 		F1E34B760AA157CCD2DFD1EE /* Pods_MSScrollControl_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577A57F96E9D51622B35333E /* Pods_MSScrollControl_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		7748D25648A8AA379C1BEDB8 /* Pods-MSScrollControl_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSScrollControl_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MSScrollControl_Example/Pods-MSScrollControl_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		938649B9205A7A590038516F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		938649BB205A7A750038516F /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		939C316621437DD50090219B /* ViewController4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController4.swift; sourceTree = "<group>"; };
 		BCC63852BD27C0FE4BA0A3AA /* MSScrollControl.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MSScrollControl.podspec; path = ../MSScrollControl.podspec; sourceTree = "<group>"; };
 		CC631DCE94228AA8DD1D9864 /* Pods-MSScrollControl_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSScrollControl_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MSScrollControl_Tests/Pods-MSScrollControl_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E03738530D6A510E1346203E /* Pods_MSScrollControl_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MSScrollControl_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,8 +118,9 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController3.swift */,
 				938649BB205A7A750038516F /* ViewController2.swift */,
+				607FACD71AFB9204008FA782 /* ViewController3.swift */,
+				939C316621437DD50090219B /* ViewController4.swift */,
 				938649B9205A7A590038516F /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -376,6 +379,7 @@
 				607FACD81AFB9204008FA782 /* ViewController3.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				938649BC205A7A750038516F /* ViewController2.swift in Sources */,
+				939C316721437DD50090219B /* ViewController4.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

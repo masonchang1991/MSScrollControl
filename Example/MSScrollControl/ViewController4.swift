@@ -1,25 +1,31 @@
 //
-//  ViewController2.swift
+//  ViewController4.swift
 //  MSScrollControl_Example
 //
-//  Created by Mason on 2018/3/15.
+//  Created by Mason on 2018/9/8.
 //  Copyright © 2018年 CocoaPods. All rights reserved.
 //
 
 import UIKit
 import MSScrollControl
 
-class ViewController2: UIViewController {
-    
+class ViewController4: UIViewController {
+
     @IBOutlet weak var demoCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "MS-Demo2"
+        self.title = "MS-Demo4"
         
         setupView()
         setupCollectionView()
         configScrollView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
     }
     
     func setupView() {
@@ -30,6 +36,7 @@ class ViewController2: UIViewController {
         demoCollectionView.delegate = self
         demoCollectionView.dataSource = self
     }
+    
     
     func configScrollView() {
         
@@ -53,7 +60,7 @@ class ViewController2: UIViewController {
     }
 }
 
-extension ViewController2: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ViewController4: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
