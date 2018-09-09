@@ -9,10 +9,14 @@
 import Foundation
 
 public enum MSScrollControlParameter {
+    case scrollType(MSScrollControl.UpdateType)
     case scrollHideSpeed(CGFloat)
     case topFloatingHeight(CGFloat)
+    //MARK: - this version isStatusBarScrollable is useless
     case isStatusBarScrollable(Bool)
     case isTabBarScrollable(Bool)
     case isTopFloatingSpaceScrollable(Bool)
     case delayDistance(CGFloat)
+    case autoHideAndShowAfterScroll(Bool)
+    case autoHideAndShowAfterScrollAnimationTime(TimeInterval)
 }

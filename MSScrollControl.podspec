@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MSScrollControl'
-  s.version          = '0.2.0'
-  s.summary          = 'Make statusbar and tabbar scrollable.'
+  s.version          = '0.3.0'
+  s.summary          = 'Make statusbar, navigationBar, tabbar, and customSpace scrollable.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?

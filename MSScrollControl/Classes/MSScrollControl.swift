@@ -11,7 +11,7 @@ import UIKit
 
 public class MSScrollControl: NSObject {
     
-    enum UpdateType {
+    public enum UpdateType {
         case transform
         case changeFrame
     }
@@ -44,13 +44,15 @@ public class MSScrollControl: NSObject {
     private var isAnimating: Bool = false
     
     // Parameters
-    private var updateType: UpdateType = .transform
+    private var updateType: UpdateType = .changeFrame
     private var delayDistance: CGFloat = 0.0
     fileprivate var scrollHideSpeed: CGFloat = 1.0
     fileprivate var topFloatingHeight: CGFloat = 0
 //    fileprivate var isStatusBarScrollable = true
     fileprivate var isTabBarScrollable = false
     fileprivate var isTopFloatingSpaceScrollable = true
+    fileprivate var autoHideAndShowAfterScroll = true
+    fileprivate var autoHideAndShowAfterScrollAnimationTime: TimeInterval = 0.3
     
     // observer
     internal var currentState: ((MSScrollControlState) -> (Void))?
@@ -118,7 +120,7 @@ public class MSScrollControl: NSObject {
         setupInitData()
     }
     
-    func setupInitData() {
+    private func setupInitData() {
         guard
             let statusBarWindow = UIApplication.shared.value(forKey: "statusBarWindow") as? UIWindow,
             let statusBarView = statusBarWindow.value(forKey: "statusBar") as? UIView else { return }
@@ -129,7 +131,7 @@ public class MSScrollControl: NSObject {
             (isTopFloatingSpaceScrollable ? (topFloatingHeight + navbarHeight): 0.0)
     }
     
-    func storeOriginData() {
+    private func storeOriginData() {
         if let vc = viewController {
             self.originVCFrame = vc.view.frame
         }
@@ -169,11 +171,9 @@ public class MSScrollControl: NSObject {
         }
     }
     
-    func adjustVCByUpdateType() {
+    private func adjustVCByUpdateType() {
         switch updateType {
         case .transform: break
-            guard let vc = viewController else { return }
-            vc.edgesForExtendedLayout = [.top, .bottom]
         case .changeFrame: break
         }
     }
@@ -240,15 +240,16 @@ public class MSScrollControl: NSObject {
                      afterDelay: 0.1)
     }
     
-    @objc open func barEndUpdate() {
-        return
-        if isAnimating {
+    @objc private func barEndUpdate() {
+
+        if isAnimating || !autoHideAndShowAfterScroll {
             NSObject.cancelPreviousPerformRequests(withTarget: self)
             return
         }
         
-        if self.changeRatio < 0.5 {
-            UIView.transition(with: scrollView, duration: 0.5, options: [.curveEaseIn], animations: {
+        if changeRatio < 0.5 {
+            //MARK: - make changeRatio to 0.0
+            UIView.transition(with: scrollView, duration: autoHideAndShowAfterScrollAnimationTime, options: [.curveEaseIn], animations: {
                 self.isAnimating = true
                 self.updateStatusBarWith(changeRatio: 0.0)
                 if self.isTabBarScrollable {
@@ -266,8 +267,9 @@ public class MSScrollControl: NSObject {
                 NSObject.cancelPreviousPerformRequests(withTarget: self)
             }
             
-        } else if self.changeRatio >= 0.5 {
-            UIView.transition(with: scrollView, duration: 0.5, options: [.curveEaseIn], animations: {
+        } else if changeRatio >= 0.5 {
+            //MARK: - make changeRatio to 1.0
+            UIView.transition(with: scrollView, duration: autoHideAndShowAfterScrollAnimationTime, options: [.curveEaseIn], animations: {
                 self.isAnimating = true
                 self.updateStatusBarWith(changeRatio: 1.0)
                 
@@ -290,7 +292,7 @@ public class MSScrollControl: NSObject {
         }
     }
     
-    func restoreToOrigin() {
+    open func restoreToOrigin() {
     
         if topVariation == 0.0 { return }
         
@@ -304,7 +306,7 @@ public class MSScrollControl: NSObject {
         updateVCFrameWith()
     }
     
-    func updateStatusBarWith(changeRatio: CGFloat) {
+    private func updateStatusBarWith(changeRatio: CGFloat) {
         topVariation = -topMaxVariation * changeRatio
         self.changeRatio = changeRatio
         if changeRatio != 0.0 {
@@ -327,7 +329,7 @@ public class MSScrollControl: NSObject {
         }
     }
     
-    func updateStatusBarWith(distance: CGFloat) {
+    private func updateStatusBarWith(distance: CGFloat) {
         topVariation = topVariation - distance * scrollHideSpeed
         if state == .scrolling(.scrollDown) {
             // if statusBarNextYPosition less than -floatingViewHeight, set statusBarNewYPosition to -floatingViewHeight
@@ -349,7 +351,7 @@ public class MSScrollControl: NSObject {
         }
     }
     
-    func updateTabbar() {
+    private func updateTabbar() {
         if let tabbarController = self.tabbarController {
             bottomVariation = tabbarHeight * changeRatio
             if changeRatio != 0.0 {
@@ -381,7 +383,7 @@ public class MSScrollControl: NSObject {
         }
     }
     
-    func updateNavBar() {
+    private func updateNavBar() {
         if let navController = self.navController {
             if changeRatio != 0.0 {
                 switch updateType {
@@ -440,7 +442,7 @@ public class MSScrollControl: NSObject {
     }
     
     deinit {
-        print("MSScrollControll gone")
+        print(classForCoder, "dealloc")
     }
 }
 
@@ -455,6 +457,8 @@ extension MSScrollControl {
         
         for parameter in parameters {
             switch (parameter) {
+            case .scrollType(let value):
+                self.updateType = value
             case .isStatusBarScrollable(let value):
 //                self.isStatusBarScrollable = value
                 //TODO: - add this func
@@ -469,6 +473,10 @@ extension MSScrollControl {
                 self.topFloatingHeight = value
             case .delayDistance(let value):
                 self.delayDistance = value
+            case .autoHideAndShowAfterScroll(let value):
+                self.autoHideAndShowAfterScroll = value
+            case .autoHideAndShowAfterScrollAnimationTime(let value):
+                self.autoHideAndShowAfterScrollAnimationTime = value
             }
         }
     }

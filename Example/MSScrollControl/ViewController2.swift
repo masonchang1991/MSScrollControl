@@ -38,7 +38,8 @@ class ViewController2: UIViewController {
             .scrollHideSpeed(0.7),
             .isTabBarScrollable(true),
             .isTopFloatingSpaceScrollable(true),
-            .delayDistance(50.0)
+            .delayDistance(0.0),
+            .scrollType(.transform)
         ]
         
         let scrollControl = MSScrollControl(viewController: self,

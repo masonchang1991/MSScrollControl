@@ -22,12 +22,6 @@ class ViewController4: UIViewController {
         configScrollView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-    }
-    
     func setupView() {
         view.backgroundColor = UIColor.blue
     }
