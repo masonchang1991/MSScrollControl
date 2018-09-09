@@ -44,8 +44,8 @@ public class MSScrollControl: NSObject {
     private var isAnimating: Bool = false
     
     // Parameters
-    private var updateType: UpdateType = .changeFrame
-    private var delayDistance: CGFloat = 0.0
+    open var updateType: UpdateType = .changeFrame
+    fileprivate var delayDistance: CGFloat = 0.0
     fileprivate var scrollHideSpeed: CGFloat = 1.0
     fileprivate var topFloatingHeight: CGFloat = 0
 //    fileprivate var isStatusBarScrollable = true
@@ -481,7 +481,7 @@ extension MSScrollControl {
         }
     }
     
-    private func transformFormFrame(_ origin: CGRect, to next: CGRect) -> CGAffineTransform {
+    func transformFormFrame(_ origin: CGRect, to next: CGRect) -> CGAffineTransform {
         var transform = CGAffineTransform(translationX: next.midX - origin.midX,
                                           y: next.minY - origin.minY)
         transform = transform.scaledBy(x: next.width/origin.width,
